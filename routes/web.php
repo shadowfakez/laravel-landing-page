@@ -33,7 +33,7 @@ Route::get('/dashboard', function () {
 |
 */
 
-Route::group(['middleware' => 'web'], function() {
+Route::group([], function() {
 
     Route::match(['get', 'post'], '/', 'App\Http\Controllers\IndexController@execute')->name('home');
     Route::get('/page/{alias}', 'App\Http\Controllers\PageController@execute')->name('page');

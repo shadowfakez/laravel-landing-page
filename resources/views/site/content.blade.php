@@ -25,7 +25,8 @@
                 </div>
             </section>
         @else
-            <section id="aboutUs"><!--Aboutus-->
+            <section id="aboutUs">
+                <!--Aboutus-->
                 <div class="inner_wrapper">
                     <div class="container">
                         <h2>{{ $page->name }}</h2>
@@ -209,9 +210,6 @@
 
 @endif
 
-
-
-
 <!--Footer-->
 <footer class="footer_wrapper" id="contact">
     <div class="container">
@@ -266,15 +264,15 @@
 
                             @csrf
 
-                            <input class="input-text" type="text" name="name" value="Your Name *"
+                            <input class="input-text" type="text" name="name" placeholder="Your Name *"
                                    onFocus="if(this.value==this.defaultValue)this.value='';"
                                    onBlur="if(this.value=='')this.value=this.defaultValue;">
-                            <input class="input-text" type="text" name="email" value="Your E-mail *"
+                            <input class="input-text" type="text" name="email" placeholder="Your E-mail *"
                                    onFocus="if(this.value==this.defaultValue)this.value='';"
                                    onBlur="if(this.value=='')this.value=this.defaultValue;">
                             <textarea name="text" class="input-text text-area" cols="0" rows="0"
                                       onFocus="if(this.value==this.defaultValue)this.value='';"
-                                      onBlur="if(this.value=='')this.value=this.defaultValue;">Your Message *</textarea>
+                                      onBlur="if(this.value=='')this.value=this.defaultValue;" placeholder="Your Message *"></textarea>
                             <input class="input-btn" type="submit" value="send message">
 
                         </form>

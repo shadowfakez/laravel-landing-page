@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use App\Models\{Page, People, Portfolio, Service};
+
 
 class IndexController extends Controller
 {
@@ -26,9 +28,18 @@ class IndexController extends Controller
 
             $data = $request->all();
 
-            //mail
+
+            $result = Mail::send('site.email', compact('data'), function($message) use ($data) {
+
+                $mail_admin = config('mail.mailers.smtp.username');
 
 
+                $message->from($data['email']);
+                $message->to($mail_admin, 'Mr. Admin')->subject('Question');
+
+            });
+
+            return redirect()->route('home')->with('success', 'Your message has been successfully sent!');
 
         }
 
