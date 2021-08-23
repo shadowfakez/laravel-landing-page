@@ -45,22 +45,26 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     //admin
     Route::get('/', function() {
+        if(view()->exists('admin.index')) {
 
-
+            $data = ['title' => 'Панель администратора'];
+//dd($data);
+            return view('admin.index', compact('data'));
+        }
     });
 
     //admin/pages
     Route::group(['prefix' => 'pages'], function() {
 
         ///admin/pages
-        Route::get('/', ['uses' => 'PagesController@execute', 'as' => 'pages']);
+        Route::get('/', ['uses' => 'App\Http\Controllers\PagesController@execute', 'as' => 'pages']);
 
         //admin/pages/add
         Route::match(['get', 'post'], '/add',
-            ['uses' => 'PagesAddController@execute', 'as' => 'pagesAdd']);
+            ['uses' => 'App\Http\Controllers\PagesAddController@execute', 'as' => 'pagesAdd']);
         //admin/edit/2
         Route::match(['get', 'post', 'delete'], '/edit/{page}',
-            ['uses' => 'PagesEditController@execute', 'as' => 'pagesEdit']);
+            ['uses' => 'App\Http\Controllers\PagesEditController@execute', 'as' => 'pagesEdit']);
 
     });
 
@@ -68,14 +72,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::group(['prefix' => 'portfolios'], function() {
 
 
-        Route::get('/', ['uses' => 'PortfolioController@execute', 'as' => 'portfolio']);
+        Route::get('/', ['uses' => 'App\Http\Controllers\PortfolioController@execute', 'as' => 'portfolio']);
 
 
         Route::match(['get', 'post'], '/add',
-            ['uses' => 'PortfolioAddController@execute', 'as' => 'portfolioAdd']);
+            ['uses' => 'App\Http\Controllers\PortfolioAddController@execute', 'as' => 'portfolioAdd']);
 
         Route::match(['get', 'post', 'delete'], '/edit/{portfolio}',
-            ['uses' => 'PortfolioEditController@execute', 'as' => 'portfolioEdit']);
+            ['uses' => 'App\Http\Controllers\PortfolioEditController@execute', 'as' => 'portfolioEdit']);
 
     });
 
@@ -83,14 +87,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::group(['prefix' => 'services'], function() {
 
 
-        Route::get('/', ['uses' => 'ServiceController@execute', 'as' => 'services']);
+        Route::get('/', ['uses' => 'App\Http\Controllers\ServiceController@execute', 'as' => 'services']);
 
 
         Route::match(['get', 'post'], '/add',
-            ['uses' => 'ServiceAddController@execute', 'as' => 'serviceAdd']);
+            ['uses' => 'App\Http\Controllers\ServiceAddController@execute', 'as' => 'serviceAdd']);
 
         Route::match(['get', 'post', 'delete'], '/edit/{service}',
-            ['uses' => 'ServiceEditController@execute', 'as' => 'serviceEdit']);
+            ['uses' => 'App\Http\Controllers\ServiceEditController@execute', 'as' => 'serviceEdit']);
 
     });
 
