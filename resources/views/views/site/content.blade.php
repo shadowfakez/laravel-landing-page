@@ -140,7 +140,7 @@
             @foreach($portfolios as $portfolio)
                 <!-- Portfolio Item -->
                     <div style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1); width: 337px; opacity: 1;"
-                         class="portfolio-item one-four {{ $portfolio->filter }} isotope-item">
+                         class="portfolio-item one-four   {{ $portfolio->filter }} isotope-item">
                         <div class="portfolio_img">
                             {!! Html::image('assets/img/'.$portfolio->images, $portfolio->name) !!}
                         </div>
@@ -152,6 +152,8 @@
                     </div>
                 <!--/Portfolio Item -->
             @endforeach
+
+
 
             </div>
             <!--/Portfolio Wrapper -->

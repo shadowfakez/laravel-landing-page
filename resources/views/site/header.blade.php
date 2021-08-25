@@ -1,5 +1,6 @@
 <div class="container">
     <div class="header_box">
+
         <div class="logo"><a href="#"><img src="{{ asset('assets/img/logo.png') }}" alt="logo"></a></div>
 
         @if(isset($menu))
@@ -19,14 +20,70 @@
                             <li><a href="#{{ $item['alias'] }}" class="scroll-link">{{ $item['title'] }}</a></li>
 
                         @endforeach
+
+                        <li class="nav-item dropdown">
+                            @if(Route::has('login'))
+                                @auth
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Welcome, {{ Auth::user()->name }}!
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button class="dropdown-item btn btn-secondary btn-block">
+                                                <a class="dropdown-item btn btn-secondary btn-block p-0 m-0"
+                                                   role="button">Logout</a>
+                                            </button>
+                                        </form>
+                                    </div>
+
+                                @else
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Welcome, guest!
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                                        <button class="dropdown-item btn btn-secondary btn-block">
+                                        <a class="dropdown-item btn btn-secondary btn-block p-0 m-0" href="{{ route('login')
+                                        }}" role="button">Login</a>
+                                    </button>
+                                    </div>
+                            @endauth
+                            @endif
+                        </li>
+
+                        {{-- @if(Route::has('login'))
+                             <div class="absolute form-inline top-0 right-0 mt-4 mr-4 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6">
+                                 @auth
+                                     <span>Welcome back, {{ Auth::user()->name }}!</span>
+
+                                     <form action="{{ route('logout') }}" method="POST">
+                                         @csrf
+                                         <button type="submit" class="btn btn-info">Logout</button>
+                                     </form>
+
+                                 @else
+
+                                     <a href="{{ route('login') }}" class="btn btn-info" role="button">Login</a>
+                                     @if (Route::has('register'))
+                                         <a href="{{ route('register') }}" class="btn btn-info" role="button">Register</a>
+                                     @endif
+                                 @endauth
+                             </div>
+                         @endif--}}
                     </ul>
                 </div>
+
             </nav>
 
-        @endif
 
+        @endif
     </div>
 </div>
+
+
 
 
 @if(session('success'))
