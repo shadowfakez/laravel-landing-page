@@ -18,11 +18,6 @@
                 </a>
             </li>
 
-            <li><a  href="{{route('portfolio')}}">
-                    <h5>Порфолио</h5>
-                </a>
-            </li>
-
             <li><a href="{{route('services')}}">
                     <h5>Сервисы</h5>
                 </a>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use App\Models\{Page, People, Portfolio, Service};
+use App\Models\{Page, People, Service};
 
 
 class IndexController extends Controller
@@ -44,11 +44,9 @@ class IndexController extends Controller
         }
 
         $pages = Page::all();
-        $portfolios = Portfolio::all();
         $services = Service::all();
         $peoples = People::all();
 
-        $filters = DB::table('portfolios')->distinct()->pluck('filter');
 
         $menu = [];
 
@@ -68,12 +66,6 @@ class IndexController extends Controller
         array_push($menu, $item);
 
         $item = [
-            'title' => 'Portfolio',
-            'alias' => 'Portfolio'
-        ];
-        array_push($menu, $item);
-
-        $item = [
             'title' => 'Team',
             'alias' => 'team'
         ];
@@ -86,6 +78,6 @@ class IndexController extends Controller
         array_push($menu, $item);
 
         return view('site.index',
-            compact('menu', 'pages', 'portfolios', 'services', 'peoples', 'filters'));
+            compact('menu', 'pages', 'services', 'peoples'));
     }
 }
