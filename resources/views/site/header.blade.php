@@ -29,6 +29,11 @@
                                         Welcome, {{ Auth::user()->name }}!
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <button class="dropdown-item btn btn-secondary btn-block">
+                                            <a class="dropdown-item btn btn-secondary btn-block p-0 m-0"
+                                               href="http://laravel-landing-page/admin" role="button">Admin</a>
+                                        </button>
+                                        <br>
                                         <form action="{{ route('logout') }}" method="POST">
                                             @csrf
                                             <button class="dropdown-item btn btn-secondary btn-block">
@@ -37,6 +42,15 @@
                                             </button>
                                         </form>
                                     </div>
+                                    {{--<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button class="dropdown-item btn btn-secondary btn-block">
+                                                <a class="dropdown-item btn btn-secondary btn-block p-0 m-0"
+                                                   role="button">Logout</a>
+                                            </button>
+                                        </form>
+                                    </div>--}}
 
                                 @else
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

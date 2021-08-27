@@ -50,9 +50,6 @@ class PagesEditController extends Controller
             }
         }
 
-
-
-
         $old = $page->toArray();
 
         if (view()->exists('admin.pages_edit')){

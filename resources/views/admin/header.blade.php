@@ -2,9 +2,9 @@
 
     <!-- Title -->
     <div class="section-title">
-      <h2>{{ $data['title'] }}</h2>
-</div>
-<!--/Title -->
+        <h2>{{ $data['title'] }}</h2>
+    </div>
+    <!--/Title -->
 
 </div>
 <!-- Container -->
@@ -13,13 +13,18 @@
 
     <div id="filters" class="sixteen columns">
         <ul style="padding:0px 0px 0px 0px">
-            <li><a  href="{{route('pages')}}">
+            <li><a href="{{route('pages')}}">
                     <h5>Страницы</h5>
                 </a>
             </li>
 
-            <li><a href="{{route('services')}}">
+            <li><a href="{{route('services.index')}}">
                     <h5>Сервисы</h5>
+                </a>
+            </li>
+
+            <li><a href="{{route('home')}}">
+                    <h5>Вернуться на сайт</h5>
                 </a>
             </li>
         </ul>
