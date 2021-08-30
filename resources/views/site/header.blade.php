@@ -16,7 +16,7 @@
                     <ul class="nav navbar-nav" id="mainNav">
 
                         @foreach($menu as $item)
-                            {{--                    <li class="active"><a href="#hero_section" class="scroll-link">Home</a></li>--}}
+
                             <li><a href="#{{ $item['alias'] }}" class="scroll-link">{{ $item['title'] }}</a></li>
 
                         @endforeach
@@ -31,7 +31,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <button class="dropdown-item btn btn-secondary btn-block">
                                             <a class="dropdown-item btn btn-secondary btn-block p-0 m-0"
-                                               href="http://laravel-landing-page/admin" role="button">Admin</a>
+                                               href="{{ route('pages') }}" role="button">Admin</a>
                                         </button>
                                         <br>
                                         <form action="{{ route('logout') }}" method="POST">
@@ -42,15 +42,6 @@
                                             </button>
                                         </form>
                                     </div>
-                                    {{--<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <form action="{{ route('logout') }}" method="POST">
-                                            @csrf
-                                            <button class="dropdown-item btn btn-secondary btn-block">
-                                                <a class="dropdown-item btn btn-secondary btn-block p-0 m-0"
-                                                   role="button">Logout</a>
-                                            </button>
-                                        </form>
-                                    </div>--}}
 
                                 @else
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -60,38 +51,18 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                         <button class="dropdown-item btn btn-secondary btn-block">
-                                        <a class="dropdown-item btn btn-secondary btn-block p-0 m-0" href="{{ route('login')
-                                        }}" role="button">Login</a>
-                                    </button>
+                                            <a class="dropdown-item btn btn-secondary btn-block p-0 m-0"
+                                               href="{{ route ('login') }}" role="button">Login</a>
+                                        </button>
                                     </div>
-                            @endauth
+                                @endauth
                             @endif
                         </li>
 
-                        {{-- @if(Route::has('login'))
-                             <div class="absolute form-inline top-0 right-0 mt-4 mr-4 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6">
-                                 @auth
-                                     <span>Welcome back, {{ Auth::user()->name }}!</span>
-
-                                     <form action="{{ route('logout') }}" method="POST">
-                                         @csrf
-                                         <button type="submit" class="btn btn-info">Logout</button>
-                                     </form>
-
-                                 @else
-
-                                     <a href="{{ route('login') }}" class="btn btn-info" role="button">Login</a>
-                                     @if (Route::has('register'))
-                                         <a href="{{ route('register') }}" class="btn btn-info" role="button">Register</a>
-                                     @endif
-                                 @endauth
-                             </div>
-                         @endif--}}
                     </ul>
                 </div>
 
             </nav>
-
 
         @endif
     </div>
